@@ -1,7 +1,73 @@
 #include <iostream>
 #include "Stock.h"
-
+#include "StockList.h"
 using namespace std;
+
+void showMenu() {
+    cout << "\nStock Portfolio Menu:" << endl;
+    cout << "1. Add Stock" << endl;
+    cout << "2. Edit Stock" << endl;
+    cout << "3. Delete Stock" << endl;
+    cout << "4. Show All Stocks" << endl;
+    cout << "5. Exit" << endl;
+    cout << "Choose an option: ";
+}
+
+int main_phase2() {
+    StockList portfolio;
+    int choice;
+    do {
+        showMenu();
+        cin >> choice;
+        cin.ignore();
+        if (choice == 1) {
+            string name;
+            int shares;
+            double price;
+            cout << "Enter stock symbol: ";
+            getline(cin, name);
+            cout << "Enter number of shares: ";
+            cin >> shares;
+            cout << "Enter price per share: ";
+            cin >> price;
+            portfolio.addStock(Stock(name, shares, price));
+            cout << "Stock added!" << endl;
+        } else if (choice == 2) {
+            string name;
+            int shares;
+            double price;
+            cout << "Enter stock symbol to edit: ";
+            getline(cin, name);
+            cout << "Enter new number of shares: ";
+            cin >> shares;
+            cout << "Enter new price per share: ";
+            cin >> price;
+            if (portfolio.editStock(name, shares, price)) {
+                cout << "Stock updated!" << endl;
+            } else {
+                cout << "Stock not found." << endl;
+            }
+        } else if (choice == 3) {
+            string name;
+            cout << "Enter stock symbol to delete: ";
+            getline(cin, name);
+            if (portfolio.deleteStock(name)) {
+                cout << "Stock deleted!" << endl;
+            } else {
+                cout << "Stock not found." << endl;
+            }
+        } else if (choice == 4) {
+            cout << "\nCurrent Portfolio:" << endl;
+            portfolio.showAll();
+        } else if (choice == 5) {
+            cout << "Exiting..." << endl;
+        } else {
+            cout << "Invalid option. Try again." << endl;
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    } while (choice != 5);
+    return 0;
+}
 
 int main() {
     Stock s1("AAPL", 10, 175.50);
