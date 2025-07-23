@@ -9,7 +9,7 @@
 - C++ documentation: https://cplusplus.com/
 
 ## Summary
-This project implements a simple Stock class for managing a stock portfolio. The class supports operator overloading for printing and comparison. Stock information such as ticker symbols and example prices were referenced from Yahoo Finance and Google Finance.
+This project implements a Stock class and a StockList class for managing a stock portfolio. The StockList class allows users to add, edit, delete, and display stocks through a menu-driven interface. Operator overloading is used for both classes to support printing and comparison. Stock information such as ticker symbols and example prices were referenced from Yahoo Finance and Google Finance.
 
 ## Reflection
-The process of designing the Stock class and implementing operator overloads was straightforward. Researching real-world stock data from finance websites helped ensure realistic test cases. All requirements for Phase 1 were completed on time. 
+The process of designing the Stock class and implementing operator overloads was straightforward. Researching real-world stock data from finance websites helped ensure realistic test cases. 
